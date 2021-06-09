@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour
     private float lifeTime = 10f;
     private Vector3 poolPosition = new Vector3(50, -50, 50);
     private Transform playerTrans;
+
     void Start()
     {
         gameObject.SetActive(false);
@@ -18,17 +19,13 @@ public class Bullet : MonoBehaviour
     {
         enableTime = Time.time;
     }
-
-
-    // Update is called once per frame
     void Update()
     {
-        if (Time.time > enableTime + lifeTime)
+        if(Time.time >= enableTime + lifeTime)
         {
             transform.position = poolPosition;
             gameObject.SetActive(false);
-        }
-        else
+        }else
         {
             transform.Translate(playerTrans.forward * speed * Time.deltaTime);
         }
